@@ -1,10 +1,13 @@
 /* SECTION element selectors */
 
+
 body {
     font-family: sans-serif;
     background-color: #F4F6F8;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 header {
@@ -14,13 +17,21 @@ header {
 
 footer {
     margin: 0;
-    padding: 3rem;
+    height: 100%;
+    margin-top: 100px;
 }
 
 
 nav li {
+    position: relative;
     display: inline-block;
-    padding: 14px 16px;
+    padding: 14px 35px;
+    transition: 0.3s ease-in;
+    border-radius: 10px;
+}
+
+nav li:hover {
+    background-color: #1C4BC4;
 }
 
 nav li a {
@@ -28,6 +39,7 @@ nav li a {
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
+    transition: 0.5s ease;
 }
 
 nav li:nth-child(3) {
@@ -45,10 +57,54 @@ span {
 }
 
 section h1 {
+    position: relative;
     color: white;
     font-size: 3rem;
     max-width: 80%;
 }
+
+
+section h1::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    left: 0;
+    bottom: -10px;
+    background-color: white;
+    animation: transform 10s infinite ease-in-out;
+}
+
+@keyframes transform {
+    0% {
+        transform: scaleX(0);
+        transform-origin: center;
+        opacity: 0;
+        left: 0;
+        width: 100%;
+        bottom: -10px;
+        left: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+
+    100% {
+        transform: scaleX(1);
+        transform-origin: center;
+        opacity: 1;
+        width: 100%;
+        left: 0;
+        opacity: 0;
+    }
+}
+
 
 section p {
     color: white;
@@ -85,6 +141,10 @@ footer h1 {
     align-items: center;
 }
 
+.justify-content-center {
+    justify-content: center;
+}
+
 .flex-direction {
     flex-direction: column;
 }
@@ -100,8 +160,28 @@ footer h1 {
 }
 
 .links li a {
-    text-decoration: underline;
+    position: relative;
     color: #1C4BC4;
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.links li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    background-color: #1C4BC4;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    transition: transform 0.2s ease-in-out;
+    transform-origin: bottom right;
+}
+
+.links li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .background {
