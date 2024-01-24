@@ -1,13 +1,16 @@
 /* SECTION element selectors */
 
+html {
+    height: 100%;
+}
 
 body {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #F4F6F8;
+    min-height: 100%;
     margin: 0;
     padding: 0;
     height: 100vh;
-    overflow-y: hidden;
 }
 
 header {
@@ -61,45 +64,24 @@ section h1 {
 }
 
 
-section h1::after {
+section h1:after {
     content: '';
-    position: absolute;
-    width: 100%;
+    display: block;
+    margin: auto;
     height: 8px;
-    left: 0;
-    bottom: -10px;
     background-color: white;
-    animation: transform 10s infinite ease-in-out;
+    animation: transform 2s infinite;
 }
 
-/* NOTE I hate animations */
+/* NOTE I hate animations | infinite underline animation */
 
 @keyframes transform {
     0% {
-        transform: scaleX(0);
-        transform-origin: center;
-        opacity: 0;
-        left: 0;
-        width: 100%;
-        bottom: -10px;
-        left: 0;
+        width: 0%;
     }
-
-    50% {
-        opacity: 1;
-    }
-
-    80% {
-        opacity: 1;
-    }
-
 
     100% {
-        transform: scaleX(1);
-        transform-origin: center;
-        opacity: 1;
         width: 100%;
-        left: 0;
         opacity: 0;
     }
 }
@@ -121,6 +103,13 @@ footer p {
 footer h1 {
     text-align: center;
 }
+
+/* !SECTION */
+
+
+
+
+
 
 /* SECTION class selectors */
 
@@ -164,6 +153,8 @@ footer h1 {
     font-size: 1.4rem;
 }
 
+/* NOTE special underline animation when hovered */
+
 .links li a::after {
     content: '';
     position: absolute;
@@ -186,6 +177,20 @@ footer h1 {
     background-color: #061130;
 }
 
+/* NOTE About WebPage CSS starts here */
+/* TODO add some about content */
+
+.content-about h1 {
+    text-align: center !important;
+    max-width: 100%;
+}
+
+.content-about span {
+    display: none;
+}
+
+/* !SECTION */
+
 /* NOTE MOBILE VERSIONS / SMALLER SCREENS--------------------------------------------------------------------------- */
 
 @media (max-width: 1600px) {
@@ -197,7 +202,7 @@ footer h1 {
 @media (max-width: 1200px) {
     body {
         overflow-y: scroll;
-        height: 0;
+        height: 100%;
         margin: 0;
         padding: 0;
     }
@@ -237,10 +242,11 @@ footer h1 {
     .main-background {
         opacity: 0.3;
         position: absolute;
+        width: 50%;
     }
 
     footer {
-        height: 0;
+        height: 0%;
     }
 }
 
